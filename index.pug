@@ -1,0 +1,112 @@
+doctype html
+html(lang='pt-br')
+  head
+    title Hello, World!
+  body
+    h1 Hello, World!
+  nav
+    div.t-teste
+      p Pug rocks!
+    //- >>>Este comentário não aparece no HTML.
+    
+    //Tag.
+    nav
+      navbar-default
+        h1 My Website! 
+        ul 
+          li
+            a Home!
+          li
+            a Quem Sou!
+          li 
+            a Contato!
+        input
+    //Classes, IDs e Atributos
+    nav#navbar-default
+      div.container-fluid
+        h1.navbar-header My Website!
+    //Os atributos são adicionados usando colchetes:
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/page-1">Page 1</a></li>
+      <li><a href="/page-2">Page 2</a></li>
+      </ul>
+    <input class="search" type="text" name="search" placeholder="Enter a search term..."/>
+    //Texto simples e blocos de texto.
+    div.container-fluid
+      h1.navbar-header My Website! We can write anuthing we want here...
+    div.container-fluid
+      p
+        | You are logged in as 
+        | user@example.com
+    div.container-fluid
+      p.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+    //Código com buffer vs código sem buffer.
+    //- 
+      O Código sem buffer começa com um sinal de (-).
+      Ele não adiciona nada diretamente à saída, mas
+      seus valores podem ser usados dentro do Pug.
+      
+    - const name = "jim"
+    //- Now I can refer to a 'name' variable in my Pug code.
+    
+    //- 
+      O código em buffer, po outro lado, começa com um igual (=).
+      Ele avalia uma expressão em JavaScript e gera o resultado.
+      
+    p= 'Two to the power of ten is: ' + 2**10 + ' !'
+    
+    //  Por motivos de segurança o código armazenado em buffer
+        tem escape em HTML.
+    p= '<script>alert("Hi")</script>'
+    
+    // Interpolação.
+    - const name_01 = "Jim"
+    p Hi #{name_01} !
+    
+    // Uper case first letter
+    - const name_02 = "alex"
+    p Hi #{name_02.charAt(0).toUpperCase() + name_02.slice(1)}
+    
+    // Iteração
+    //- A palavra-chave do Pug each facilita a iteração em arrays:
+    
+    p Iteração
+    - const employees = ['Angela', 'Jim', 'Nilson', 'Simone']
+    ul
+      each employ in employees
+        li= employ
+        
+    // Iterando sobre as chaves em um objeto.
+    p Iteração sobre as chaves de um objeto.
+    -
+      const teste = {
+        'First Name': 'James',
+        'Last Name': 'Hibberd'
+      }
+    ul 
+      each value, key in teste
+        li= `${key}: ${value}`
+        
+    //-
+      O pug também permite que você forneça umm bloco else
+      que será executado se o array ou objeto estiver vazio.
+      
+    - const employees_02 = []
+    ul
+      each employee in employees_02
+        li= employee
+      else
+        li The company doesn't have any employees. Mayhe hire some?
+    
+    
+    
+  
+      
+      
+    
+        
