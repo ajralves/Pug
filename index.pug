@@ -102,6 +102,26 @@ html(lang='pt-br')
         li= employee
       else
         li The company doesn't have any employees. Mayhe hire some?
+        
+    //Condicionais
+    h1 Condcionais
+    
+    -
+      const employee_03 = {
+        firstName: 'James',
+        lastName: 'Hibbard',
+        extn: '123456'
+      }
+      
+    #employee_03
+      p= `${employee_03.firstName} ${employee_03.lastName}`
+      p Extension:
+        if employee_03.extn
+          =employee_03.extn
+        else
+          | n/a
+          
+          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
     
     
     
